@@ -163,7 +163,7 @@ export default function HomePage() {
 
   <div className="flex flex-wrap justify-center gap-4">
     <motion.a
-      href="/support/ATS CV Erlangga.pdf"
+      href="/support/ATS CV Ade Riska.pdf"
       download
       whileHover={{
         y: -3,
@@ -193,7 +193,7 @@ export default function HomePage() {
     </motion.a>
 
     <motion.a
-      href="/support/CV Erlangga.pdf"
+      href="/support/CV ADE RISKA.pdf"
       download
       whileHover={{
         y: -3,
