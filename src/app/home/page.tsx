@@ -10,14 +10,98 @@ import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <motion.div 
-      className="flex flex-col flex-grow pt-40 pb-20 items-center justify-center min-h-screen bg-gradient-to-r from-black via-[#1a0000] to-[#4b0000]"
-      initial={{ backgroundPosition: "0% 50%" }}
-      animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-      transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
-      style={{ backgroundSize: "200% 200%" }}
-    >
-      <Navbar />
+    <motion.div
+  className="relative isolate flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#050505] pt-40 pb-20"
+>
+  <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_0%,#29200c_0%,#100e09_28%,#050505_70%)]" />
+
+  <motion.div
+    className="pointer-events-none absolute -z-10 h-[450px] w-[450px] rounded-full bg-[#c9a44c]/10 blur-[120px]"
+    style={{ top: "-10%", left: "-10%" }}
+    animate={{
+      x: [0, 100, 30, 0],
+      y: [0, 60, 120, 0],
+      scale: [1, 1.2, 0.9, 1],
+      opacity: [0.4, 0.8, 0.5, 0.4],
+    }}
+    transition={{
+      duration: 18,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+
+  <motion.div
+    className="pointer-events-none absolute -z-10 h-[500px] w-[500px] rounded-full bg-[#8f6b25]/10 blur-[140px]"
+    style={{ bottom: "0%", right: "-15%" }}
+    animate={{
+      x: [0, -100, -40, 0],
+      y: [0, -100, -30, 0],
+      scale: [1, 0.85, 1.15, 1],
+      opacity: [0.3, 0.7, 0.4, 0.3],
+    }}
+    transition={{
+      duration: 22,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+
+  {Array.from({ length: 24 }).map((_, i) => (
+    <motion.div
+      key={i}
+      className="pointer-events-none absolute -z-10 rounded-full bg-[#e4c778]"
+      style={{
+        width: i % 4 === 0 ? 3 : 2,
+        height: i % 4 === 0 ? 3 : 2,
+        left: `${(i * 37 + 11) % 100}%`,
+        top: `${(i * 53 + 17) % 100}%`,
+        boxShadow: "0 0 8px 1px rgba(212,175,55,0.35)",
+      }}
+      animate={{
+        y: [0, -35 - (i % 5) * 12, 0],
+        x: [0, (i % 2 === 0 ? 1 : -1) * (10 + (i % 4) * 8), 0],
+        opacity: [0.15, 0.8, 0.2],
+        scale: [0.8, 1.3, 0.8],
+      }}
+      transition={{
+        duration: 4 + (i % 5) * 2,
+        delay: (i % 7) * 0.6,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    />
+  ))}
+
+  <motion.div
+    className="pointer-events-none absolute -z-10 h-[1px] w-[80%] bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent"
+    style={{ top: "30%", left: "10%" }}
+    animate={{
+      opacity: [0.1, 0.65, 0.1],
+      scaleX: [0.6, 1, 0.7],
+      x: ["-5%", "5%", "-5%"],
+    }}
+    transition={{
+      duration: 12,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+
+  <motion.div
+    className="pointer-events-none absolute -z-10 h-[600px] w-[600px] rounded-full border border-[#d4af37]/[0.07]"
+    style={{ top: "12%", left: "50%", translateX: "-50%" }}
+    animate={{ rotate: 360 }}
+    transition={{
+      duration: 90,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  >
+    <div className="absolute left-[15%] top-[18%] h-1.5 w-1.5 rounded-full bg-[#e4c778]/70 shadow-[0_0_12px_3px_rgba(212,175,55,0.2)]" />
+  </motion.div>
+
+  <Navbar />
 
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
@@ -27,37 +111,122 @@ export default function HomePage() {
       >
         <RunningImage />
         
-        <h1 className="text-2xl  md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-bold text-white text-center">Hi, my name is Ade Riska Aulia</h1>
+        <motion.h1
+          className="text-center text-3xl font-bold tracking-[0.02em] sm:text-4xl md:text-5xl lg:text-6xl"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+        >
+          <span className="block text-lg font-normal tracking-normal text-gray-400 sm:text-xl md:text-2xl">
+            Hi, my name is
+          </span>
+
+          <motion.span
+            className="mt-2 block cursor-default bg-gradient-to-r from-[#D4AF37] via-[#FFF0BE] to-[#B8860B] bg-clip-text text-transparent"
+            whileHover={{
+              filter:
+                "drop-shadow(0 0 4px rgba(255,223,120,0.9)) drop-shadow(0 0 12px rgba(212,175,55,0.8)) drop-shadow(0 0 25px rgba(212,175,55,0.5))",
+            }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            Ade Riska Aulia
+          </motion.span>
+        </motion.h1>
         
-        <p className="text-md md:text-xl lg:text-xl xl:text-2xl 2xl:text-3xl text-gray-400 mt-4 max-w-5xl text-center">
-         <span className="text-[#4b0000] text-outline">Frontliner | Content Creator | Inventory Control | </span><span className="text-black text-outline"> Beauty Consultant | Administration | Hiker  </span>
-        </p>
-        
-        <div className="flex flex-col items-center gap-4 mt-10 mb-10">
-          <h2 className="text-white text-2xl font-semibold">Download My CV</h2>
-          
-          <div className="flex flex-wrap gap-4 justify-center">
-            <motion.a
-              href="/support/ATS CV Erlangga.pdf"
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[#4b0000] hover:bg-black border border-white text-white px-6 py-2 rounded shadow transition duration-300"
+        <div className="mt-6 flex max-w-4xl flex-wrap justify-center gap-3 px-4">
+          {[
+            "Frontliner",
+            "Content Creator",
+            "Inventory Control",
+            "Beauty Consultant",
+            "Administration",
+            "Hiker",
+          ].map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-[#8F6B25]/60 bg-white/[0.03] px-4 py-2 text-xs font-medium tracking-wide text-[#E8D9B5] transition-all duration-300 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] sm:text-sm"
             >
-              Download ATS CV
-            </motion.a>
-            
-            <motion.a
-              href="/support/CV Erlangga.pdf"
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-black hover:bg-[#4b0000] border border-white text-white px-6 py-2 rounded shadow transition duration-300"
-            >
-              Download CV
-            </motion.a>
-          </div>
+              {item}
+            </span>
+          ))}
         </div>
+        
+<div className="mt-12 mb-10 flex flex-col items-center gap-6">
+  <motion.h2
+    className="text-2xl font-bold tracking-wide bg-gradient-to-r from-[#B8860B] via-[#FFF0BE] to-[#D4AF37] bg-clip-text text-transparent md:text-3xl"
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7 }}
+  >
+    Download My CV
+  </motion.h2>
+
+  <div className="flex flex-wrap justify-center gap-4">
+    <motion.a
+      href="/support/ATS CV Erlangga.pdf"
+      download
+      whileHover={{
+        y: -3,
+        boxShadow: "0 0 22px rgba(212,175,55,0.25)",
+      }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ duration: 0.25 }}
+      className="group flex items-center gap-3 rounded-lg border border-[#8F6B25] bg-[#11100B] px-6 py-3 text-sm font-semibold tracking-wide text-[#E8D9B5] transition-colors duration-300 hover:border-[#F5DE9A] hover:bg-[#D4AF37]/10 sm:text-base"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="transition-transform duration-300 group-hover:translate-y-0.5"
+      >
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <path d="m7 10 5 5 5-5" />
+        <path d="M12 15V3" />
+      </svg>
+      <span>Download ATS CV</span>
+    </motion.a>
+
+    <motion.a
+      href="/support/CV Erlangga.pdf"
+      download
+      whileHover={{
+        y: -3,
+        boxShadow: "0 0 22px rgba(212,175,55,0.25)",
+      }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ duration: 0.25 }}
+      className="group flex items-center gap-3 rounded-lg border border-[#D4AF37] bg-gradient-to-r from-[#8F6B25] to-[#D4AF37] px-6 py-3 text-sm font-bold tracking-wide text-black transition-all duration-300 hover:from-[#F5DE9A] hover:to-[#D4AF37] sm:text-base"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="transition-transform duration-300 group-hover:translate-y-0.5"
+      >
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <path d="m7 10 5 5 5-5" />
+        <path d="M12 15V3" />
+      </svg>
+      <span>Download CV</span>
+    </motion.a>
+  </div>
+
+  <p className="text-center text-xs tracking-wide text-gray-500">
+    Available in PDF format
+  </p>
+</div>
 
         <section className="text-white text-center mt-20 max-w-4xl px-4">
           <h2 className="text-3xl font-bold mb-6">Skills</h2>

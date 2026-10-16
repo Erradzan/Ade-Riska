@@ -1,6 +1,6 @@
 "use client";
 
-import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from 'react-icons/md';
 import { motion } from "framer-motion";
 
@@ -9,18 +9,7 @@ export default function Footer() {
     <footer className="fixed bottom-0 left-0 w-full flex flex-col justify-center items-center bg-transparent backdrop-blur-md py-2">
         <div className="flex space-x-12 text-white sm:text-md md:text-lg lg:text-xl xl:text-3xl 2xl:text-5xl">
             <motion.a
-            href="https://github.com/Erradzan"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            className="text-white hover:text-gray-400 cursor-pointer"
-            >
-                <FaGithub />
-            </motion.a>
-
-            <motion.a
-            href="https://www.linkedin.com/in/erlangga-sukmaradzan/"
+            href="https://www.linkedin.com/in/ade-rsk/"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2 }}
@@ -31,7 +20,7 @@ export default function Footer() {
             </motion.a>
 
             <motion.a
-            href="http://wa.me/+6285947491314"
+            href="http://wa.me/+6281615715378"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2 }}
