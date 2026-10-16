@@ -29,7 +29,7 @@ export default function Navbar() {
       <div className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md shadow-md">
         <div className="flex items-center justify-between px-6 py-3">
           <div className="text-white sm:text-md md:text-lg lg:text-xl xl:text-xl 2xl:text-3xl font-bold">
-            Erlangga Sukmaradzan - Web Developer
+            Ade Riska Aulia - SPV Frontliner and Inventory
           </div>
     
           <motion.button

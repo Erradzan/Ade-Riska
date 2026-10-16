@@ -27,10 +27,10 @@ export default function HomePage() {
       >
         <RunningImage />
         
-        <h1 className="text-2xl  md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-bold text-white text-center">Hi, my name is Erlangga Sukmaradzan</h1>
+        <h1 className="text-2xl  md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-bold text-white text-center">Hi, my name is Ade Riska Aulia</h1>
         
         <p className="text-md md:text-xl lg:text-xl xl:text-2xl 2xl:text-3xl text-gray-400 mt-4 max-w-5xl text-center">
-         <span className="text-[#4b0000] text-outline">Frontend Developer | React.js | Next.js | Finance |</span><span className="text-black text-outline"> Payroll | Accounting | Gamer | Music Enthusiast </span>
+         <span className="text-[#4b0000] text-outline">Frontliner | Content Creator | Inventory Control | </span><span className="text-black text-outline"> Beauty Consultant | Administration | Hiker  </span>
         </p>
         
         <div className="flex flex-col items-center gap-4 mt-10 mb-10">
