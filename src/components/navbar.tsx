@@ -12,7 +12,7 @@ export default function Navbar() {
   const links = [
     { label: "Home", path: "/home" },
     { label: "About Me", path: "/about" },
-    { label: "Projects", path: "/projects" },
+    { label: "Work Experience", path: "/experiences" },
   ];
 
   const navigate = (path: string) => {
