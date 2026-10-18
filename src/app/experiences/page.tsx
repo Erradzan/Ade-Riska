@@ -16,7 +16,6 @@ import {
   FaComments,
   FaRegHeart,
   FaHandsHelping,
-  FaArrowRight,
   FaLightbulb,
 } from "react-icons/fa";
 
