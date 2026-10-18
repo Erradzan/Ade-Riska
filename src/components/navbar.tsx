@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -8,77 +9,82 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const goToHome = () => {
-    router.push("/home");
-  };
+  const links = [
+    { label: "Home", path: "/home" },
+    { label: "About Me", path: "/about" },
+    { label: "Projects", path: "/projects" },
+  ];
 
-  const goToAbout = () => {
-    router.push("/about");
-  };
-
-  const goToProjects = () => {
-    router.push("/projects");
-  };
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const navigate = (path: string) => {
+    setIsOpen(false);
+    router.push(path);
   };
 
   return (
-    <>
-      <div className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md shadow-md">
-        <div className="flex items-center justify-between px-6 py-3">
-          <div className="text-white sm:text-md md:text-lg lg:text-xl xl:text-xl 2xl:text-3xl font-bold">
-            Ade Riska Aulia - SPV Frontliner and Inventory
-          </div>
-    
-          <motion.button
-            onClick={toggleDropdown}
-            className="bg-transparent text-white px-4 py-2 cursor-pointer border border-white rounded-full sm:text-md md:text-lg lg:text-xl xl:text-xl 2xl:text-3xl"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isOpen ? "Close" : "Menu"}
-          </motion.button>
-        </div>
+    <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/[0.08] bg-black/70 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
+        {/* Logo kiri */}
+        <button
+          onClick={() => navigate("/home")}
+          aria-label="Go to home"
+          className="rounded-lg transition-transform duration-300 hover:scale-105"
+        >
+          <img
+            src="/support/logo.webp"
+            alt="Portfolio logo"
+            className="h-20 w-20 object-contain"
+          />
+        </button>
 
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="flex flex-col items-center space-y-4 py-4 bg-transparent"
-            >
-                <motion.button
-                onClick={goToHome}
-                className="text-white border-b border-white cursor-pointer hover:zoom sm:text-md md:text-lg lg:text-xl xl:text-xl 2xl:text-3xl"
-                whileHover={{ scale: 1.05 }}
-                >
-                    Home
-                </motion.button>
-                
-                <motion.button
-                    onClick={goToAbout}
-                    className="text-white border-b border-white cursor-pointer hover:zoom sm:text-md md:text-lg lg:text-xl xl:text-xl 2xl:text-3xl"
-                    whileHover={{ scale: 1.05 }}
-                >
-                    About Me
-                </motion.button>
-                
-                <motion.button
-                    onClick={goToProjects}
-                    className="text-white border-b border-white cursor-pointer hover:zoom sm:text-md md:text-lg lg:text-xl xl:text-xl 2xl:text-3xl"
-                    whileHover={{ scale: 1.05 }}
-                >
-                    Projects
-                </motion.button>
-            </motion.div>
-          )}
-        
-        </AnimatePresence>
+        {/* Tombol Explore kanan */}
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={isOpen}
+          className="flex items-center gap-2 rounded-full border border-[#D9B875]/40 px-4 py-2 text-sm text-[#D9B875] transition-colors hover:border-[#D9B875] hover:bg-[#D9B875]/10"
+          whileTap={{ scale: 0.96 }}
+        >
+          <span>{isOpen ? "Close" : "Explore"}</span>
+          <motion.span
+            animate={{ rotate: isOpen ? 45 : 0 }}
+            transition={{ duration: 0.25 }}
+            className="text-lg leading-none"
+          >
+            +
+          </motion.span>
+        </motion.button>
       </div>
-    </>
+
+      {/* Dropdown */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="flex flex-col items-center gap-1 border-t border-white/[0.06] px-6 py-4">
+              {links.map((link, index) => (
+                <motion.button
+                  key={link.path}
+                  onClick={() => navigate(link.path)}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.07 }}
+                  className="group flex w-full max-w-xs items-center justify-center gap-2 rounded-lg py-3 text-sm text-neutral-300 transition-colors hover:bg-white/[0.04] hover:text-[#D9B875]"
+                >
+                  <span>{link.label}</span>
+                  <span className="text-[#D9B875] opacity-0 transition-opacity group-hover:opacity-100">
+                    ↗
+                  </span>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 }

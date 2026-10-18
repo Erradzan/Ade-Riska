@@ -5,7 +5,6 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { FaReact, FaGitAlt, FaHtml5, FaCss3Alt } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiFramer, SiJavascript, SiPostman } from "react-icons/si";
-import RunningImage from "@/components/runningimage";
 import Image from "next/image";
 
 export default function HomePage() {
@@ -109,7 +108,6 @@ export default function HomePage() {
         transition={{ duration: 1 }}     
         className="flex flex-col items-center w-auto"
       >
-        <RunningImage />
         
         <motion.h1
           className="text-center text-3xl font-bold tracking-[0.02em] sm:text-4xl md:text-5xl lg:text-6xl"

@@ -31,7 +31,7 @@ export default function Footer() {
             </motion.a>
 
             <motion.a
-            href="mailto:erradzan@gmail.com?subject=Hello&body=I wanted to reach out about..."
+            href="mailto:aderiskaaulia@gmail.com?subject=Hello&body=I wanted to reach out about..."
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2 }}
